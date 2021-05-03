@@ -1,0 +1,33 @@
+<div class="col-12 mt-5 text-center">
+      <section class="pricing py-5" >
+        <div class="container">
+          <div class="row">
+            <% @plans.each do |plan|%>
+              <div class="col-lg-4">
+                <div class="card mb-5 mb-lg-0">
+                  <div class="card-body">
+                    <h5 class="card-title text-muted text-uppercase text-center">
+                      <%= plan.title %>
+                    </h5>
+                    <h6 class="card-price text-center">
+                      $<%= plan.price %><span class="period">/month</span>
+                    </h6>
+                    <hr>
+                    <ul class="fa-ul">
+                      <% plan.benefits.each do |key,value| %>
+                        <% if value == "true"%>
+                          <li><span class="fa-li"><i class="fas fa-check"></i></span><%= key %></li>
+                        <%else %>
+                        <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span><%= key %></li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                    <%= link_to 'Subscribe', new_billings_path(price_id: plan.price_id), remote:true %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </div>

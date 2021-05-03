@@ -1,0 +1,10 @@
+
+    const CHECKOUT_SESSION_ID = "<%= @session_data.id %>"
+    console.log(CHECKOUT_SESSION_ID)
+    var stripe = Stripe('pk_test_51ImtmBSDWHjTZeZl6FcP6GXhrtMinjTGvhgWPsghNsvhJZQCdfukOS1ciLY2ck5VmVbGyx1Hv1ELuNDDEnKFBZwJ00n0gvjWUa')
+    stripe.redirectToCheckout({
+      sessionId: CHECKOUT_SESSION_ID
+    }).then((result) => {
+      // handle any result data you might need
+      console.log(result)
+    })
