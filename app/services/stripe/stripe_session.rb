@@ -1,7 +1,7 @@
 class Stripe::StripeSession
-  def initialize(price_id,email)
+  def initialize(price_id,user)
     @price_id = price_id
-    @email = email
+    @user = user
   end
   def call
 
@@ -11,7 +11,7 @@ class Stripe::StripeSession
       cancel_url: "http://localhost:3000/billings",
       payment_method_types: ['card'],
       mode: 'subscription',
-      customer_email: @email,
+      customer_email: @user.email,
       line_items: [{
         quantity: 1,
         price: @price_id,
