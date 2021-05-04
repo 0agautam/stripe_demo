@@ -8,7 +8,7 @@ class Stripe::StripeSession
     begin
     session = Stripe::Checkout::Session.create(
       success_url: "http://localhost:3000/billings/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: root_url,
+      cancel_url: "http://localhost:3000/billings",
       payment_method_types: ['card'],
       mode: 'subscription',
       customer_email: @email,

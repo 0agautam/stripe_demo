@@ -1,5 +1,5 @@
 class Plan < ApplicationRecord
-  
+  has_many :subscriptions  
   def self.get_api_price
     Stripe::Plan.list[:data].each do |plan|
       productId = plan['product']
